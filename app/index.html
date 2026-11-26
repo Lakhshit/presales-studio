@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Studio | Presales Studio</title>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/app/app.css">
+</head>
+<body>
+<div class="splash" id="splash"><div><div class="ring"></div>Unlocking your workspace…</div></div>
+<div class="app">
+  <header class="top">
+    <a class="brand" href="/"><div class="mark">PS</div><div>Presales Studio<small>RFP → approved estimate</small></div></a>
+    <div class="opp" id="opp"></div>
+    <div class="spacer"></div>
+    <div class="kpi-chip" id="kpichip"></div>
+    <div class="userchip" id="userchip"></div>
+  </header>
+  <nav class="side" id="side"></nav>
+  <main id="main"></main>
+</div>
+<input type="file" id="fileIn" multiple accept=".pdf,.docx,.xlsx,.xls,.xlsm,.csv,.ods,.txt,.md" hidden>
+<div class="toast" id="toast"></div>
+<noscript>This app needs JavaScript enabled.</noscript>
+<script src="/assets/auth.js"></script>
+<script>
+  (function () {
+    var s = window.PSAuth.session();
+    if (!s) { location.replace('/login.html?next=' + encodeURIComponent(location.pathname)); return; }
+    window.PS_SESSION = { name: s.name, role: s.role, user: s.user };
+  })();
+</script>
+<script src="/lib/pdf.min.js"></script>
+<script src="/lib/mammoth.browser.min.js"></script>
+<script src="/lib/xlsx.full.min.js"></script>
+<script src="/lib/exceljs.min.js"></script>
+<script>
+  (function () {
+    if (!window.PS_SESSION) return;
+    window.PSAuth.decryptText('/files/app.enc').then(function (code) {
+      var sc = document.createElement('script');
+      sc.src = URL.createObjectURL(new Blob([code], { type: 'text/javascript' }));
+      sc.onload = function () { var sp = document.getElementById('splash'); if (sp) sp.remove(); };
+      document.body.appendChild(sc);
+    }).catch(function () {
+      window.PSAuth.signOut();
+      location.replace('/login.html?expired=1');
+    });
+  })();
+</script>
+</body>
+</html>
