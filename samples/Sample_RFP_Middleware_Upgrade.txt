@@ -1,0 +1,44 @@
+REQUEST FOR PROPOSAL — RFP-2026-117
+Oracle Fusion Middleware Upgrade Services
+Issued by: Contoso Retail Group (fictional sample)
+Issue date: 01 Dec 2026
+Clarification questions deadline: 08 Dec 2026
+Proposal submission deadline: 15 Dec 2026
+
+1. BACKGROUND
+Contoso Retail runs its order management and supplier integration platform on Oracle WebLogic Server 12.2.1.2 with Oracle SOA Suite and Oracle Service Bus. The platform is approaching end of support and must be upgraded to WebLogic 12.2.1.4.
+
+2. CURRENT ENVIRONMENT
+The estate consists of four (4) environments: DEV, SIT, UAT and PROD.
+There are 4 WebLogic domains in total, one per environment.
+The domains contain 16 managed servers configured in clusters.
+There are 15 custom Java applications deployed as EAR and WAR files.
+The SOA platform hosts 20 composites, mainly BPEL processes.
+Oracle Service Bus hosts 30 proxy services and associated business services.
+The web tier consists of 2 OHS instances in front of production.
+Current documentation is partially available; some runbooks are outdated.
+
+3. SCOPE OF WORK
+The vendor shall perform an assessment of the current environment, including compatibility of custom code with the target version.
+The vendor shall upgrade all environments to WebLogic 12.2.1.4 with the latest quarterly patch set.
+The vendor must upgrade the SOA composites and OSB services and redeploy them to every environment.
+The vendor shall provide a detailed upgrade runbook and rollback plan.
+The vendor should support SIT and UAT, including defect fixing for upgrade-related issues.
+Performance testing is out of scope for the vendor and will be executed by Contoso.
+The production cutover must be completed within a weekend outage window of 36 hours.
+The vendor shall provide 2 weeks of hypercare after go-live.
+
+4. NON-FUNCTIONAL REQUIREMENTS
+All work must comply with Contoso information security policies and ISO 27001 controls.
+Access to environments will be provided via VPN; the vendor is expected to work remotely.
+The solution must maintain the existing high availability cluster configuration.
+
+5. PROJECT MANAGEMENT
+The vendor shall provide a project plan, weekly status reports and a RAID log.
+The project must go live no later than 31 Mar 2027.
+
+6. RESPONSE REQUIREMENTS
+Please provide details of similar WebLogic upgrade engagements delivered in the last 3 years.
+Please provide a fixed price with a breakdown by phase and role.
+The vendor shall state all assumptions and exclusions.
+Documentation and knowledge transfer to the Contoso operations team are required.
